@@ -25,6 +25,21 @@
             bindings = <&mkp LCLK>;
             key-positions = <13 12>;
         };
+
+        jk-to-ctrlj {
+            bindings = <&kp LC(J)>;
+            key-positions = <18 19>;
+        };
+
+        kl-to-ctrlk {
+            bindings = <&kp LC(K)>;
+            key-positions = <19 20>;
+        };
+
+        lenter-to-ctrlsemicron {
+            bindings = <&kp LC(SEMICOLON)>;
+            key-positions = <21 20>;
+        };
     };
 
     macros {
