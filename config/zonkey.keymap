@@ -227,7 +227,7 @@
 &kp LCTRL           &kp LEFT_ALT  &kp LEFT_COMMAND  &mt LEFT_SHIFT ESCAPE  &kp BACKSPACE  &lt 1 LEFT_COMMAND               &lt 2 RIGHT_COMMAND  &mt RIGHT_SHIFT SPACE                                 &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp LC(K_SCROLL_UP) LC(K_SCROLL_DOWN)>;
+            sensor-bindings = <&scroll_up_down>;
         };
 
         layer_1 {
