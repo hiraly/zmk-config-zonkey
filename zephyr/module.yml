@@ -1,6 +1,3 @@
 build:
-  cmake: pmw3610-driver
-  kconfig: pmw3610-driver/Kconfig
   settings:
-    board_root: config
-    dts_root: pmw3610-driver
+    board_root: .
