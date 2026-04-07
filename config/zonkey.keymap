@@ -36,7 +36,34 @@
 };
 
 / {
-    combos { compatible = "zmk,combos"; };
+    combos {
+        compatible = "zmk,combos";
+
+        combo_lclick {
+            key-positions = <12 13>; // D+F
+            bindings = <&mkp MB1>;
+        };
+
+        combo_rclick {
+            key-positions = <11 12>; // S+D
+            bindings = <&mkp MB2>;
+        };
+
+        combo_ctrl_j {
+            key-positions = <18 19>; // J+K
+            bindings = <&kp LC(J)>;
+        };
+
+        combo_ctrl_k {
+            key-positions = <19 20>; // K+L
+            bindings = <&kp LC(K)>;
+        };
+
+        combo_ctrl_semi {
+            key-positions = <20 21>; // L+;
+            bindings = <&kp LC(SEMI)>;
+        };
+    };
 
     conditional_layers {
         compatible = "zmk,conditional-layers";
