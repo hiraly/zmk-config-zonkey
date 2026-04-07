@@ -38,6 +38,15 @@
 / {
     combos { compatible = "zmk,combos"; };
 
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+
+        tri_layer {
+            if-layers = <1 2>;
+            then-layer = <3>;
+        };
+    };
+
     mo2: mo2 {
         compatible = "zmk,behavior-mod-morph";
         #binding-cells = <0>;
@@ -191,16 +200,16 @@
 
         default_layer {
             // -----------------------------------------------------------------------------------------
-            // |  Q  |  W  |  E  |  R  |  T  |                        |  Y  |  U   |  I  |  O  |  P  | 
-            // |  A  |  S  |  D  |  F  |  G  |LS(LG(S))|        　 | - |  H  |  J   |  K  |  L  |  `  | 
-            // |SHIFT|  Z  |  X  |  C  |  V  |  B  |           | B |  N  |  M   |  ,  |  .  |  /  | 
-            // | CTRL | WIN | ALT |HENKAN|SPACE|MUHENKAN|       | BS | ENT |      　　　　       | DEL |           
+            // |  Q  |  W  |  E  |  R  |  T  |                        |  Y  |  U   |  I  |  O  |  P  |
+            // |  A  |  S  |  D  |  F  |  G  |LS(LG(S))|        | - |  H  |  J   |  K  |  L  |  '  |
+            // |SHIFT|  Z  |  X  |  C  |  V  |  B  |           | B |  N  |  M   |  ,  |  .  |  /  |
+            // |CTRL | ALT | CMD |ESC  | BS  | 英数 |          | かな|SPACE|                   |CAPS |           
 
             bindings = <
 &kp Q           &kp W             &kp E         &kp R             &kp T                                         &kp Y          &kp U      &kp I      &kp O    &kp P
 &kp A           &kp S             &kp D         &kp F             &kp G        &kp LS(LG(S))         &kp B      &kp H          &kp J      &kp K      &kp L    &kp SQT
 &kp LEFT_SHIFT  &kp Z             &kp X         &lt 6 C           &lt 5 V      &lt 4 B               &kp MINUS  &kp N          &kp M      &kp COMMA  &kp DOT  &kp SLASH
-&kp LCTRL       &kp LEFT_COMMAND  &kp LEFT_ALT  &lt 3 INT_HENKAN  &lt 2 SPACE  &lt 1 INT_MUHENKAN               &kp BACKSPACE  &kp ENTER                                 &kp DEL
+&mt LCTRL TAB   &kp LEFT_ALT      &kp LEFT_COMMAND  &mt LSFT ESC  &kp BACKSPACE  &lt 1 LANGUAGE_2               &lt 2 LANGUAGE_1  &kp SPACE                                &kp CAPSLOCK
             >;
 
             sensor-bindings = <&scroll_up_down>;
@@ -208,16 +217,16 @@
 
         layer_1 {
             // -----------------------------------------------------------------------------------------
-            // |CAPS　| 　　|     |     |                    　　　　　　 |     |     |  -  |  ^  |  ¥  |
-            // | TAB |     |     |     |     |     |              |    |     |     |     |  @  |  [  |
-            // |SHIFT|     |     |     |     |     |           　 | 英数 | かな |    |  ; |  :  |  ]  |
-            // | CTRL| WIN | ALT |HENKAN|SPACE|MUHENKAN|         | BS | ENT |                   | DEL |
+            // |  !  |  @  |  #  |  $  |  %  |                        |  ^  |  &  |  *  |  \  |  +  |
+            // |  '  |  "  |  -  |  _  |  =  |     |           |     |  [  |  ]  |  (  |  )  |     |
+            // |     |  `  |  ~  |     |  F5 |  |  |           |     |  {  |  }  |  :  |  ;  |     |
+            // |     |     |     |     |     |     |           |     |     |                   |     |
 
             bindings = <
-&kp CAPSLOCK    &kp GRAVE     &trans        &trans            &trans                                          &trans         &trans     &moA  &moB  &moC
-&kp TAB         &trans        &trans        &trans            &trans       &trans                &kp JP_EISU  &trans         &trans     &moD  &moE  &kp ENTER
-&kp LEFT_SHIFT  &trans        &trans        &trans            &trans       &trans                &trans       &kp JP_KANA    &moF       &moG  &moH  &kp ENTER
-&mt LCTL ESC    &kp LEFT_WIN  &kp LEFT_ALT  &lt 3 INT_HENKAN  &lt 2 SPACE  &lt 1 INT_MUHENKAN                 &kp BACKSPACE  &kp ENTER                         &kp DEL
+&kp LS(N1)      &kp LS(N2)    &kp LS(N3)    &kp LS(N4)        &kp LS(N5)                                          &kp LS(N6)     &kp LS(N7)     &kp LS(N8)    &kp BSLH        &kp LS(EQUAL)
+&kp SQT         &kp LS(SQT)   &kp MINUS     &kp LS(MINUS)     &kp EQUAL    &trans                &trans           &kp LBKT       &kp RBKT       &kp LS(N9)    &kp LS(N0)      &trans
+&trans          &kp GRAVE     &kp LS(GRAVE) &trans            &kp F5       &kp LS(BSLH)          &trans           &kp LS(LBKT)   &kp LS(RBKT)   &kp LS(SEMI)  &kp SEMI        &trans
+&trans          &trans        &trans        &trans            &trans       &trans                                   &trans         &trans                                        &trans
             >;
 
             sensor-bindings = <&scroll_up_down>;
@@ -226,15 +235,15 @@
         layer_2 {
             // -----------------------------------------------------------------------------------------
             // |  1  |  2  |  3  |  4  |  5  |                     |  6  |  7  |  8  |  9  |   0  |
-            // |      |     |     |     |     |     |           |    |     |     |     |  ↑  |      |
-            // |SHIFT|     |     |     |     |     |           |     |     |     |  ←  |  ↓  |  →  |
-            // | CTRL| WIN | ALT |HENKAN|SPACE|MUHENKAN|         | BS | ENT |                   | DEL |
+            // |     |     |     |     | F2  | F12 |          |    |  ←  |  ↓  |  ↑  |  →  | TAB  |
+            // |     |     |     |     |     |     |          |    | HOME| END |VOLDN|VOLUP|      |
+            // |     |     |     |     |     |     |          |    |     |                  |      |
 
             bindings = <
-&kp N1          &mo2          &kp N3        &kp N4            &kp N5                                     &mo6           &mo7       &mo8            &mo9            &mo0
-&trans          &trans        &trans        &trans            &trans       &trans                &trans  &trans         &trans     &trans          &kp UP_ARROW    &trans
-&kp LEFT_SHIFT  &trans        &trans        &trans            &trans       &trans                &trans  &trans         &trans     &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW
-&kp LCTRL       &kp LEFT_WIN  &kp LEFT_ALT  &lt 3 INT_HENKAN  &lt 2 SPACE  &lt 1 INT_MUHENKAN            &kp BACKSPACE  &kp ENTER                                                   &kp DEL
+&kp N1          &kp N2        &kp N3        &kp N4            &kp N5                                          &kp N6         &kp N7     &kp N8          &kp N9          &kp N0
+&kp TAB         &trans        &trans        &trans            &kp F2       &kp F12               &trans        &kp LEFT       &kp DOWN   &kp UP          &kp RIGHT       &trans
+&trans          &trans        &trans        &trans            &trans       &trans                &trans        &kp HOME       &kp END    &kp C_VOL_DN    &kp C_VOL_UP    &trans
+&trans          &trans        &trans        &trans            &trans       &trans                               &trans         &trans                                     &trans
             >;
 
             sensor-bindings = <&scroll_up_down>;
@@ -251,7 +260,7 @@
 &kp F1          &kp F2        &kp F3        &kp F4            &kp F5                                     &kp F6         &kp F7     &kp F8  &kp F9  &kp F10
 &kp F11         &kp F12       &trans        &trans            &trans       &trans                &trans  &trans         &trans     &trans  &trans  &trans
 &kp LEFT_SHIFT  &trans        &trans        &trans            &trans       &trans                &trans  &trans         &trans     &trans  &trans  &trans
-&kp LCTRL       &kp LEFT_WIN  &kp LEFT_ALT  &lt 3 INT_HENKAN  &lt 2 SPACE  &lt 1 INT_MUHENKAN            &kp BACKSPACE  &kp ENTER                           &kp DEL
+&trans          &trans        &trans        &trans            &trans       &trans                           &trans         &trans                                      &trans
             >;
 
             sensor-bindings = <&scroll_up_down>;
@@ -268,7 +277,7 @@
 &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2  &bt BT_SEL 3    &bt BT_SEL 4                               &kp MINUS        &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp PLUS
 &bt BT_CLR      &bt BT_CLR_ALL  &trans        &trans          &trans        &trans              &trans   &kp SLASH        &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp ASTERISK
 &kp LEFT_SHIFT  &trans          &trans        &trans          &trans        &trans              &kp DOT  &kp KP_NUMBER_0  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp EQUAL
-&kp LCTRL       &kp LEFT_WIN    &kp LEFT_ALT  &kp INT_HENKAN  &kp SPACE     &kp INT_MUHENKAN             &kp BACKSPACE    &kp ENTER                                                        &kp DEL
+&trans          &trans          &trans        &trans          &trans        &trans                        &trans           &trans                                                               &trans
             >;
 
             sensor-bindings = <&scroll_up_down>;
@@ -285,7 +294,7 @@
 &trans          &trans        &trans        &trans          &trans                                 &trans         &trans     &trans  &trans  &trans
 &trans          &trans        &trans        &trans          &trans     &trans              &trans  &trans         &trans     &trans  &trans  &trans
 &kp LEFT_SHIFT  &trans        &trans        &trans          &trans     &trans              &trans  &trans         &trans     &trans  &trans  &trans
-&kp LCTRL       &kp LEFT_WIN  &kp LEFT_ALT  &kp INT_HENKAN  &kp SPACE  &kp INT_MUHENKAN            &kp BACKSPACE  &kp ENTER                          &kp DEL
+&trans          &trans        &trans        &trans          &trans     &trans                      &trans         &trans                                     &trans
             >;
 
             sensor-bindings = <&scroll_up_down>;
