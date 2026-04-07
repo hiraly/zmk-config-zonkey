@@ -228,13 +228,13 @@
         default_layer {
             // -----------------------------------------------------------------------------------------
             // |  Q  |  W  |  E  |  R  |  T  |                        |  Y  |  U   |  I  |  O  |  P  |
-            // |  A  |  S  |  D  |  F  |  G  |LS(LG(S))|        | - |  H  |  J   |  K  |  L  |  '  |
+            // |  A  |  S  |  D  |  F  |  G  |LS(LG(S))|        | - |  H  |  J   |  K  |  L  | ENT |
             // |SHIFT|  Z  |  X  |  C  |  V  |  B  |           | B |  N  |  M   |  ,  |  .  |  /  |
             // |CTRL | ALT | CMD |ESC  | BS  | 英数 |          | かな|SPACE|                   |CAPS |           
 
             bindings = <
 &kp Q           &kp W             &kp E         &kp R             &kp T                                         &kp Y          &kp U      &kp I      &kp O    &kp P
-&kp A           &kp S             &kp D         &kp F             &kp G        &kp LS(LG(S))         &kp B      &kp H          &kp J      &kp K      &kp L    &kp SQT
+&kp A           &kp S             &kp D         &kp F             &kp G        &kp LS(LG(S))         &kp B      &kp H          &kp J      &kp K      &kp L    &kp ENTER
 &kp LEFT_SHIFT  &kp Z             &kp X         &lt 6 C           &lt 5 V      &lt 4 B               &kp MINUS  &kp N          &kp M      &kp COMMA  &kp DOT  &kp SLASH
 &mt LCTRL TAB   &kp LEFT_ALT      &kp LEFT_COMMAND  &mt LSFT ESC  &kp BACKSPACE  &lt 1 LANGUAGE_2               &lt 2 LANGUAGE_1  &kp SPACE                                &kp CAPSLOCK
             >;
