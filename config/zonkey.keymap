@@ -236,7 +236,7 @@
 &kp Q           &kp W             &kp E         &kp R             &kp T                                         &kp Y          &kp U      &kp I      &kp O    &kp P
 &kp A           &kp S             &kp D         &kp F             &kp G        &kp LS(LG(S))         &kp B      &kp H          &kp J      &kp K      &kp L    &kp ENTER
 &kp LEFT_SHIFT  &kp Z             &kp X         &lt 6 C           &lt 5 V      &kp B                  &kp MINUS  &kp N          &kp M      &kp COMMA  &kp DOT  &kp SLASH
-&mt LCTRL TAB   &kp LEFT_ALT      &kp LEFT_COMMAND  &mt LSFT ESC  &kp BACKSPACE  &lt 1 LANGUAGE_2               &lt 4 LANGUAGE_1  &kp SPACE                                &kp CAPSLOCK
+&mt LCTRL TAB   &kp LEFT_ALT      &kp LEFT_COMMAND  &mt LSFT ESC  &kp BACKSPACE  &lt 1 LANGUAGE_2               &lt 4 LANGUAGE_1  &mt LSFT SPACE                           &kp CAPSLOCK
             >;
 
             sensor-bindings = <&scroll_up_down>;
